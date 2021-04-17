@@ -12,9 +12,7 @@ const config = {
     format: "umd",
     indent: false,
     extend: true,
-    banner: `// ${meta.homepage} v${
-      meta.version
-    } Copyright ${new Date().getFullYear()} ${meta.author.name}`,
+    banner: `// ${meta.homepage} v${meta.version}`,
     globals: Object.assign(
       {},
       ...Object.keys(meta.dependencies || {})

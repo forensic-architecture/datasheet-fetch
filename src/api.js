@@ -1,5 +1,5 @@
-const domainMsg = (domainType) =>
-  `Something went wrong fetching ${domainType}. Check the URL or try disabling them in the config file.`;
+const errorMsg = (type) =>
+  `Something went wrong fetching ${type}. Check the URL or try disabling them in the config file.`;
 
 export default async function fetchDomain(
   config = {
@@ -56,7 +56,7 @@ export default async function fetchDomain(
   //   } else {
   //     associationsPromise = fetch(ASSOCIATIONS_URL)
   //       .then((response) => response.json())
-  //       .catch(() => handleError(domainMsg("associations")));
+  //       .catch(() => handleError(errorMsg("associations")));
   //   }
   // }
 
@@ -71,7 +71,7 @@ export default async function fetchDomain(
   //   } else {
   //     sourcesPromise = fetch(SOURCES_URL)
   //       .then((response) => response.json())
-  //       .catch(() => handleError(domainMsg("sources")));
+  //       .catch(() => handleError(errorMsg("sources")));
   //   }
   // }
 
@@ -79,14 +79,14 @@ export default async function fetchDomain(
   // if (features.USE_SITES) {
   //   sitesPromise = fetch(SITES_URL)
   //     .then((response) => response.json())
-  //     .catch(() => handleError(domainMsg("sites")));
+  //     .catch(() => handleError(errorMsg("sites")));
   // }
 
   // let shapesPromise = Promise.resolve([]);
   // if (features.USE_SHAPES) {
   //   shapesPromise = fetch(SHAPES_URL)
   //     .then((response) => response.json())
-  //     .catch(() => handleError(domainMsg("shapes")));
+  //     .catch(() => handleError(errorMsg("shapes")));
   // }
 
   const promises = Object.entries(features).reduce((acc, [key, value]) => {
@@ -100,7 +100,7 @@ export default async function fetchDomain(
       } else {
         p = fetch(src)
           .then((response) => response.json())
-          .catch(() => handleError(domainMsg(key)));
+          .catch(() => handleError(errorMsg(key)));
       }
     }
     return [...acc, p];
