@@ -1,5 +1,5 @@
 {
-  "name": "datasheet-fetch",
+  "name": "@forensic-architecture/datasheet-fetch",
   "version": "0.0.1",
   "description": "A module to fetch data from a datasheet-server API",
   "main": "dist/datasheet-fetch.js",

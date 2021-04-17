@@ -32,62 +32,7 @@ export default async function fetchDomain(
     return [];
   }
 
-  // return async () => {
   onFetchStart();
-  // dispatch(toggleFetchingDomain())
-
-  // // NB: EVENT_DATA_URL is a list, and so results are aggregated
-  // const eventPromise = Promise.all(
-  //   EVENT_DATA_URL.map((url) =>
-  //     fetch(url)
-  //       .then((response) => response.json())
-  //       .catch(() => handleError("events"))
-  //   )
-  // ).then((results) => results.flatMap((t) => t));
-
-  // let associationsPromise = Promise.resolve([]);
-  // if (features.USE_ASSOCIATIONS) {
-  //   if (!ASSOCIATIONS_URL) {
-  //     associationsPromise = Promise.resolve(
-  //       handleError(
-  //         "USE_ASSOCIATIONS is true, but you have not provided a ASSOCIATIONS_EXT URL"
-  //       )
-  //     );
-  //   } else {
-  //     associationsPromise = fetch(ASSOCIATIONS_URL)
-  //       .then((response) => response.json())
-  //       .catch(() => handleError(errorMsg("associations")));
-  //   }
-  // }
-
-  // let sourcesPromise = Promise.resolve([]);
-  // if (features.USE_SOURCES) {
-  //   if (!SOURCES_URL) {
-  //     sourcesPromise = Promise.resolve(
-  //       handleError(
-  //         "USE_SOURCES is true, but you have not provided a SOURCES_EXT URL"
-  //       )
-  //     );
-  //   } else {
-  //     sourcesPromise = fetch(SOURCES_URL)
-  //       .then((response) => response.json())
-  //       .catch(() => handleError(errorMsg("sources")));
-  //   }
-  // }
-
-  // let sitesPromise = Promise.resolve([]);
-  // if (features.USE_SITES) {
-  //   sitesPromise = fetch(SITES_URL)
-  //     .then((response) => response.json())
-  //     .catch(() => handleError(errorMsg("sites")));
-  // }
-
-  // let shapesPromise = Promise.resolve([]);
-  // if (features.USE_SHAPES) {
-  //   shapesPromise = fetch(SHAPES_URL)
-  //     .then((response) => response.json())
-  //     .catch(() => handleError(errorMsg("shapes")));
-  // }
 
   const promises = Object.entries(features).reduce((acc, [key, value]) => {
     const { src, fetch: shouldFetch } = value;
@@ -127,41 +72,4 @@ export default async function fetchDomain(
       onError(err);
       console.error(err.message);
     });
-
-  // return Promise.all([
-  //   eventPromise,
-  //   associationsPromise,
-  //   sourcesPromise,
-  //   sitesPromise,
-  //   shapesPromise,
-  // ])
-  //   .then(([events, associations, sources, sites, shapes]) => {
-  //     const result = {
-  //       events,
-  //       associations,
-  //       sources,
-  //       sites,
-  //       shapes,
-  //       notifications,
-  //     };
-  //     if (
-  //       // TODO this is probably hard-coded from datasheet-server
-  //       Object.values(result).some((resp) => resp.hasOwnProperty("error"))
-  //     ) {
-  //       throw new Error(
-  //         "Some URLs returned negative. If you are in development, check the server is running"
-  //       );
-  //     }
-  //     // dispatch(toggleFetchingDomain());
-  //     // dispatch(setInitialCategories(result.associations));
-  //     return result;
-  //   })
-  //   .catch((err) => {
-  //     // dispatch(fetchError(err.message));
-  //     // dispatch(toggleFetchingDomain());
-  //     onError(err);
-  //     // TODO: handle this appropriately in React hierarchy
-  //     // alert(err.message);
-  //   });
-  // };
 }

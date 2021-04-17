@@ -19,7 +19,8 @@ tape(
     var result = await fetchDatasheet({
       features: {
         events: {
-          src: "http://localhost:4040/api/grenfell/export_events/deeprows",
+          src:
+            "https://blmprotests.forensic-architecture.org/us2020-server/api/us2020/export_events/deeprows",
           fetch: true,
         },
       },
