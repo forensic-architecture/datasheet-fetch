@@ -1,0 +1,29 @@
+{
+  "name": "datasheet-fetch",
+  "version": "0.0.1",
+  "description": "A module to fetch data from a datasheet-server API",
+  "main": "dist/datasheet-fetch.js",
+  "scripts": {
+    "test": "tape 'test/**/*-test.js'",
+    "postpublish": "echo 'export tag version here'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forensic-architecture/datasheet-fetch.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "Zac Ioannidis",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/forensic-architecture/datasheet-fetch/issues"
+  },
+  "homepage": "https://github.com/forensic-architecture/datasheet-fetch#readme",
+  "devDependencies": {
+    "node-fetch": "^2.6.1",
+    "rollup": "^2.45.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "tape": "^5.2.2"
+  }
+}
