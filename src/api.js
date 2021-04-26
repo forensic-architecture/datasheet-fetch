@@ -5,11 +5,11 @@ export default async function fetchDomain(
   config = {
     // TODO Should we support list for sources, or post-transform functions?
     features: {
-      events: { src: undefined, fetch: false },
-      associations: { src: undefined, fetch: false },
-      sources: { src: undefined, fetch: false },
-      sites: { src: undefined, fetch: false },
-      shapes: { src: undefined, fetch: false },
+      events: { src: undefined },
+      associations: { src: undefined },
+      sources: { src: undefined },
+      sites: { src: undefined },
+      shapes: { src: undefined },
     },
   },
   callbacks = {
@@ -37,16 +37,15 @@ export default async function fetchDomain(
   const promises = Object.entries(features).reduce((acc, [key, value]) => {
     const { src, fetch: shouldFetch } = value;
     let p = Promise.resolve([]);
-    if (shouldFetch) {
-      if (!src) {
-        p = Promise.resolve(
-          handleError(`no URL provided for [${key}] data retrieval`)
-        );
-      } else {
-        p = fetch(src)
-          .then((response) => response.json())
-          .catch(() => handleError(errorMsg(key)));
-      }
+
+    if (!src) {
+      p = Promise.resolve(
+        handleError(`no URL provided for [${key}] data retrieval`)
+      );
+    } else {
+      p = fetch(src)
+        .then((response) => response.json())
+        .catch(() => handleError(errorMsg(key)));
     }
     return [...acc, p];
   }, []);

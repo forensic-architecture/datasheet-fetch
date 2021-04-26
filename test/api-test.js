@@ -21,7 +21,6 @@ tape(
         events: {
           src:
             "https://blmprotests.forensic-architecture.org/us2020-server/api/us2020/export_events/deeprows",
-          fetch: true,
         },
       },
     });
